@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "build"
+  },
+  "exclude": [
+    "**/__tests__/**/*",
+    "**/build/**/*"
+  ],
+  "include": [
+    "src/**/*"
+  ]
+}

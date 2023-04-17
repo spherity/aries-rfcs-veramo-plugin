@@ -1,0 +1,45 @@
+{
+  "name": "veramo-plugin-template",
+  "version": "1.0.0",
+  "source": "src/index.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "type": "module",
+  "veramo": {
+    "pluginInterfaces": {
+      "IMyAgentPlugin": "./src/types/IMyAgentPlugin.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "generate-plugin-schema": "yarn veramo dev generate-plugin-schema",
+    "start": "veramo server",
+    "build:watch": "tsc -b --watch",
+    "test:ci": "yarn test --coverage=true",
+    "test": "cross-env NODE_OPTIONS=\"--experimental-vm-modules\" jest",
+    "test:watch": "yarn test --watch --verbose",
+    "clean": "rm -rf tmp && rm database.sqlite && rm -rf build && rm tsconfig.tsbuildinfo"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@jest/globals": "^29.4.3",
+    "@types/jest": "29.4.0",
+    "@veramo/cli": "^5.1.2",
+    "cross-env": "^7.0.3",
+    "jest": "29.4.3",
+    "ts-jest": "29.0.5",
+    "typescript": "4.9.5"
+  },
+  "files": [
+    "build/**/*",
+    "src/**/*",
+    "README.md",
+    "plugin.schema.json",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@veramo/core-types": "^5.1.2",
+    "@veramo/did-manager": "^5.1.2",
+    "@veramo/key-manager": "^5.1.2"
+  }
+}
