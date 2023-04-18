@@ -20,7 +20,25 @@ import { IPluginMethodMap, IAgentContext, IDIDManager, IResolver } from '@veramo
  *
  * @beta
  */
-export interface AriesRFCsPlugin extends IPluginMethodMap {
+
+export enum MESSAGE_TYPES_0453 {
+  PROPOSE_CREDENTIAL = 'https://didcomm.org/issue-credential/2.1/propose-credential',
+  OFFER_CREDENTIAL = 'https://didcomm.org/issue-credential/2.1/offer-credential',
+  REQUEST_CREDENTIAL = 'https://didcomm.org/issue-credential/2.1/request-credential',
+  ISSUE_CREDENTIAL = 'https://didcomm.org/issue-credential/2.1/issue-credential',
+  PROBLEM_REPORT = 'https://didcomm.org/issue-credential/2.1/problem_report',
+  COMPLETE = 'https://didcomm.org/issue-credential/2.1/complete',
+}
+
+export enum MESSAGE_TYPES_0454 {
+  PROPOSE_PRESENTATION = 'https://didcomm.org/present-proof/2.2/propose-presentation',
+  REQUEST_PRESENTATION = 'https://didcomm.org/present-proof/2.2/request-presentation',
+  PRESENTATION = 'https://didcomm.org/present-proof/2.2/presentation',
+  PROBLEM_REPORT = 'https://didcomm.org/present-proof/2.2/problem_report',
+  ACK = 'https://didcomm.org/notification/1.0/ack',
+}
+
+export interface IAriesRFCsPlugin extends IPluginMethodMap {
   /**
    * Your plugin method description
    *
@@ -29,31 +47,33 @@ export interface AriesRFCsPlugin extends IPluginMethodMap {
    *   Declaring a context type here lets other developers know which other plugins
    *   need to also be installed for this method to work.
    */
-  send0023(args: send0023MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse>
-  send0453(args: send0453MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse>
-  send0454(args: send0454MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse>
+  send0023(args: Send0023MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse>
+  send0453(args: Send0453MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse>
+  send0454(args: Send0454MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse>
 }
 
-interface sendMessageAttr{
-    from: string;
-    to: string;
+interface SendMessageAttr {
+  from: string
+  to: string
 }
 
-interface send0023MessageAttr extends sendMessageAttr{}
-interface send0453MessageAttr extends sendMessageAttr{
-    type: string;
-    message: {
-        '@type': string,
-        [key: string]: string
-    }
+export interface Send0023MessageAttr extends SendMessageAttr {}
+export interface Send0453MessageAttr extends SendMessageAttr {
+  type: MESSAGE_TYPES_0453
+  message: {
+    '@type': MESSAGE_TYPES_0453
+    [key: string]: string
+  }
+  packingType: DIDCommMessagePacking
 }
 
-interface send0454MessageAttr extends sendMessageAttr{
-    type: string;
-    message: {
-        '@type': string,
-        [key: string]: string
-    }
+export interface Send0454MessageAttr extends SendMessageAttr {
+  type: MESSAGE_TYPES_0454
+  message: {
+    '@type': MESSAGE_TYPES_0454
+    [key: string]: string
+  }
+  packingType: DIDCommMessagePacking
 }
 
 /**
@@ -100,9 +120,15 @@ export type IMyAgentPluginFooResult = {
  * @beta
  */
 export type SendRFCsResponse = {
-    threadId: string
-    protocolState: string
-  }
+  threadId: string
+  protocolState: string
+}
+
+export enum DIDCommMessagePacking {
+  NONE = 'none',
+  JWS = 'jws',
+  AUTHCRYPT = 'authcrypt',
+}
 
 /**
  * This context describes the requirements of this plugin.

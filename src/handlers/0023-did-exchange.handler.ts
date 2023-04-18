@@ -3,12 +3,11 @@ import { IAgentContext, IDataStore, IDIDManager, IKeyManager } from '@veramo/cor
 import { IDIDComm } from '@veramo/did-comm/src/types/IDIDComm'
 import { IDataStoreORM } from '@veramo/data-store'
 import { createMachine, interpret, Interpreter, StateMachine } from 'xstate'
-import { DIDCommMessagePacking } from '../dto/send-didcomm-message.dto'
 import { randomUUID } from 'crypto'
 import { waitFor } from 'xstate/lib/waitFor'
 import { IDIDCommMessage } from '@veramo/did-comm/src/types/message-types'
 import { VeramoAgent } from '../types/VeramoAgent'
-import { TrustResolver } from '../../trust/interfaces/trust-resolver.interface'
+import { DIDCommMessagePacking } from '../types/IAriesRFCsPlugin'
 
 type IContext = IAgentContext<IDIDManager & IKeyManager & IDIDComm & IDataStore & IDataStoreORM>
 
@@ -245,9 +244,9 @@ export class DidExchange0023MessageHandler extends AbstractMessageHandler {
 
   // The function which will be called when answering to an invitation, determining if the
   // inviting did is trustworthy
-  private readonly trustResolver: TrustResolver | undefined
+  private readonly trustResolver: any | undefined
 
-  constructor(private readonly resolver?: TrustResolver) {
+  constructor(private readonly resolver?: any) {
     super()
     this.trustResolver = resolver
   }
