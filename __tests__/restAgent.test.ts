@@ -1,12 +1,7 @@
 // noinspection ES6PreferShortImport
 
 import 'cross-fetch/polyfill'
-import {
-  IAgent,
-  createAgent,
-  IAgentOptions,
-  IMessageHandler,
-} from '@veramo/core'
+import { IAgent, createAgent, IAgentOptions, IMessageHandler } from '@veramo/core'
 import { DataSource } from 'typeorm'
 import { AgentRestClient } from '@veramo/remote-client'
 import express from 'express'
@@ -20,8 +15,10 @@ import { jest } from '@jest/globals'
 jest.setTimeout(30000)
 
 import { IMyAgentPlugin } from '../src/types/IMyAgentPlugin.js'
+import Aries0023Logic from './shared/Aries0023Logic'
+import Aries0453Logic from './shared/Aries0453Logic'
+import Aries0454Logic from './shared/Aries0454Logic'
 // Shared tests
-import myPluginLogic from './shared/myPluginLogic'
 
 const databaseFile = 'rest-database.sqlite'
 const port = 3002
@@ -44,7 +41,6 @@ const getAgent = (options?: IAgentOptions) =>
   })
 
 const setup = async (options?: IAgentOptions): Promise<boolean> => {
-
   const config = await getConfig('./agent.yml')
   config.constants.databaseFile = databaseFile
   const { agent, db } = await createObjects(config, { agent: '/agent', db: '/dbConnection' })
@@ -71,7 +67,7 @@ const setup = async (options?: IAgentOptions): Promise<boolean> => {
 const tearDown = async (): Promise<boolean> => {
   try {
     await new Promise((resolve, reject) => {
-      restServer.close((err) => err ? reject(err) : resolve(null))
+      restServer.close((err) => (err ? reject(err) : resolve(null)))
     })
     await dbConnection.dropDatabase()
     await dbConnection.destroy()
@@ -85,5 +81,7 @@ const tearDown = async (): Promise<boolean> => {
 const testContext = { getAgent, setup, tearDown }
 
 describe('REST integration tests', () => {
-  myPluginLogic(testContext)
+  Aries0023Logic(testContext)
+  Aries0453Logic(testContext)
+  Aries0454Logic(testContext)
 })
