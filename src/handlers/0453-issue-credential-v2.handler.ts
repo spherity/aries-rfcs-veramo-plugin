@@ -909,7 +909,7 @@ export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
         .then(() => {
           console.debug(`[Aries 0453 Sent didcomm message of type [${message.type}] to did [${recipientDid}]`)
         })
-        .catch((err) => {
+        .catch((err: any) => {
           console.error({ err }, `Unable to send didcomm message for aries 0453 flow with threadId [${message.thid}]`)
           throw err
         })

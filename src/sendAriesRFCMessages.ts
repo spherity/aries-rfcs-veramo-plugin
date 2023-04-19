@@ -1,4 +1,4 @@
-import { IAgentPlugin } from '@veramo/core-types'
+import { IAgentPlugin } from '@veramo/core'
 import { randomUUID } from 'crypto'
 import { interpret } from 'xstate'
 import { waitFor } from 'xstate/lib/waitFor'

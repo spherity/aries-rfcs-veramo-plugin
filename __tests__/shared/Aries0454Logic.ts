@@ -3,8 +3,7 @@ import { interpret } from 'xstate'
 import { randomUUID } from 'crypto'
 import { VeramoAgent } from '../../src/types/VeramoAgent'
 import { waitFor } from 'xstate/lib/waitFor'
-import { TAgent, IMessageHandler } from '@veramo/core-types'
-import { IMyAgentPlugin } from '../../src/types/IMyAgentPlugin.js'
+import { TAgent, IMessageHandler } from '@veramo/core'
 import {
   PresentProof0454MessageHandler,
   Transition_0454,
@@ -14,8 +13,9 @@ import {
 
 import { jest } from '@jest/globals'
 import { getRandomString } from '../utils/utils'
+import { IAriesRFCsPlugin } from '../../src/types/IAriesRFCsPlugin'
 
-type ConfiguredAgent = TAgent<IMyAgentPlugin & IMessageHandler>
+type ConfiguredAgent = TAgent<IAriesRFCsPlugin & IMessageHandler>
 
 export default (testContext: {
   getAgent: () => ConfiguredAgent

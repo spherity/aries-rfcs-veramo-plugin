@@ -1,4 +1,4 @@
-import { IPluginMethodMap, IAgentContext, IDIDManager, IResolver } from '@veramo/core-types'
+import { IPluginMethodMap, IAgentContext, IDIDManager, IResolver } from '@veramo/core'
 
 /**
  * My Agent Plugin description.

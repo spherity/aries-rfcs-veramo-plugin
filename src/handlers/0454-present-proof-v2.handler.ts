@@ -854,7 +854,7 @@ export class PresentProof0454MessageHandler extends AbstractMessageHandler {
         .then(() => {
           console.debug(`[Aries 0454 Sent didcomm message of type [${message.type}] to did [${recipientDid}]`)
         })
-        .catch((err) => {
+        .catch((err: any) => {
           console.error({ err }, `Unable to send didcomm message for aries 0454 flow with threadId [${message.thid}]`)
           throw err
         })

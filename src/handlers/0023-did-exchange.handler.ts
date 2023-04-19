@@ -723,7 +723,7 @@ export class DidExchange0023MessageHandler extends AbstractMessageHandler {
         .then(() => {
           console.debug(`[Aries 0023] Sent didcomm message of type [${message.type}] to did [${recipientDid}]`)
         })
-        .catch((err) => {
+        .catch((err: any) => {
           console.error(
             { err },
             `Unable to pack and send didcomm message for aries 0023 flow with threadId [${message.thid}]`

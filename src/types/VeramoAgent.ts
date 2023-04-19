@@ -6,7 +6,7 @@ import {
   IKeyManager,
   IMessageHandler,
   IResolver,
-} from '@veramo/core-types'
+} from '@veramo/core'
 
 export type VeramoAgent = IDIDManager &
   IKeyManager &
