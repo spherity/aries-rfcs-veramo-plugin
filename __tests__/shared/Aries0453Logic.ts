@@ -24,7 +24,7 @@ export default (testContext: {
   tearDown: () => Promise<boolean>
 }) => {
   describe('issue credential v2 aries exchange 0453', () => {
-    const aries0453Machine = interpret(new IssueCredential0453MessageHandler().stateMachineConfiguration)
+    const aries0453Machine = interpret(IssueCredential0453MessageHandler.getMachineConfig())
 
     const sendOfferMock = jest
       .spyOn(IssueCredential0453MessageHandler.prototype as any, 'sendOffer')

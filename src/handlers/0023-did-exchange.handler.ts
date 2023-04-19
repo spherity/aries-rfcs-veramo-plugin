@@ -244,9 +244,9 @@ export class DidExchange0023MessageHandler extends AbstractMessageHandler {
 
   // The function which will be called when answering to an invitation, determining if the
   // inviting did is trustworthy
-  private readonly trustResolver: any | undefined
+  private readonly trustResolver: any
 
-  constructor(private readonly resolver?: any) {
+  constructor(private readonly resolver: any) {
     super()
     this.trustResolver = resolver
   }
@@ -782,5 +782,9 @@ export class DidExchange0023MessageHandler extends AbstractMessageHandler {
       console.error(`Unable to save message for aries 0023 flow with threadId [${threadId}]`, exception)
       throw exception
     }
+  }
+
+  public static getMachineConfig() {
+    return new this(() => {}).stateMachineConfiguration
   }
 }

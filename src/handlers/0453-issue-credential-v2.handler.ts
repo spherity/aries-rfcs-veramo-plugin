@@ -102,8 +102,12 @@ const METADATA_AIP_RECEIVED_MESSAGE = 'AIP_RECEIVED_MESSAGE'
  *
  */
 export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
-  constructor() {
+  private issueCredentialFunction: Function
+  private receiveCredentialFunction: Function
+  constructor(issueCredentialCallback: Function, receiveCredentialCallback: Function) {
     super()
+    this.issueCredentialFunction = issueCredentialCallback
+    this.receiveCredentialFunction = receiveCredentialCallback
   }
 
   get stateMachineConfiguration(): StateMachine<any, any, any> {
@@ -742,7 +746,13 @@ export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
 
     const credential_preview = messages[0].data.credential_preview
 
-    // const createdCredential = await this.createCredential(credential_preview, fromDid, toDid, veramoAgent)
+    let createdCredential
+
+    try {
+      createdCredential = await this.issueCredentialFunction(credential_preview, fromDid, toDid)
+    } catch (e: any) {
+      throw Error(e)
+    }
 
     const ariesIssueCredential = {
       '@id': messageId,
@@ -752,7 +762,7 @@ export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
       },
       goal_code: '<goal-code>',
       comment: 'here is your credential',
-      // credentials: [createdCredential],
+      credentials: [createdCredential],
       onboardingId: credential_preview.onboardingId || undefined,
       formats: [
         {
@@ -796,33 +806,13 @@ export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
 
     const credential = message.data.credentials[0]
 
-    // try {
-    //   const recipientIdentifier = await this.prisma?.identifier.findFirst({
-    //     where: {
-    //       did: fromDid,
-    //     },
-    //   })
+    try {
+      this.receiveCredentialFunction(credential)
 
-    //   if (!recipientIdentifier) {
-    //     throw new Error(`Identifier with did<${fromDid}> is not found`)
-    //   }
-
-    //   if (recipientIdentifier.tenantId) {
-    //     await this.prisma?.credential.create({
-    //       data: {
-    //         data: credential,
-    //         type: credential.type[1],
-    //         tenantId: recipientIdentifier.tenantId,
-    //         onboardingId: message.data.onboardingId ? message.data.onboardingId : undefined,
-    //       },
-    //     })
-    //   }
-
-    //   // If need to send Ack write the code for it below here
-    // } catch (e: any) {
-    //   throw new Error(e)
-    //   // Send Problem Report
-    // }
+      // If need to send Ack please create a merge request for it.
+    } catch (e: any) {
+      throw Error(e)
+    }
   }
 
   private async sendProblemReport(event: any) {
@@ -982,125 +972,10 @@ export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
     }
   }
 
-  // private async createCredential(
-  //   credentialData: any,
-  //   issuerDid: string,
-  //   recipientDid: string,
-  //   veramoAgent: VeramoAgent
-  // ) {
-  //   // const credentialCreated = this.commandBus.execute(new CreateCredentialCommand(issuerDid, credentialData, false, false, true))
-  //   const createdAt = new Date()
-  //   const expiresAt = credentialData.expirationDate
-  //     ? new Date(credentialData.expirationDate)
-  //     : new Date(createdAt.getTime() + 1000 * 60 * 60 * 24 * 365)
-
-  //   const issuesAt = credentialData.issuanceDate ? new Date(credentialData.issuanceDate) : new Date()
-
-  //   const credentialSchema =
-  //     credentialData.credentialType === CredentialType.IdentityCredential
-  //       ? 'https://open-credentialing-initiative.github.io/schemas/credentials/IdentityCredential-v1.0.0.jsonld'
-  //       : 'https://open-credentialing-initiative.github.io/schemas/credentials/DSCSAATPCredential-v1.0.0.jsonld'
-
-  //   const credentialPayload: CredentialPayload = {
-  //     id: credentialData.credentialId,
-  //     type: [credentialData.credentialType],
-  //     issuer: issuerDid,
-  //     '@context': [credentialSchema],
-  //     expirationDate: expiresAt.toISOString(),
-  //     issuanceDate: issuesAt.toISOString(),
-  //     credentialSubject: {
-  //       id: recipientDid,
-  //       type: credentialData.credentialType,
-  //       ...credentialData.data,
-  //     },
-  //   }
-
-  //   if (credentialData.credentialStatusId) {
-  //     const url = new URL(credentialData.credentialStatusId)
-
-  //     const paramEntries = url.pathname.replace(/^\//, '').split(/\s*,\s*/)
-  //     const queryKeys: string[] = []
-  //     const params: string[] = []
-
-  //     paramEntries.forEach((e) => {
-  //       const [key, value] = e.split('=')
-  //       queryKeys.push(key)
-  //       params.push(decodeURIComponent(value))
-  //     })
-
-  //     const query = queryKeys.map((key, i) => `${key}={{${i}}}`)
-
-  //     credentialPayload['@context']!.push(RevocationList2021LdapContext)
-  //     credentialPayload.credentialStatus = {
-  //       id: credentialData.credentialStatusId,
-  //       type: 'RevocationStatus2021LDAP',
-  //       ssl: url.protocol === 'ldaps:',
-  //       host: url.host,
-  //       query: query.join(','),
-  //       params,
-  //     }
-  //   } else {
-  //     // Caller has not specifically asked for LDAP credential status, so we use our revocation method
-  //     if (!issuerDid.startsWith('did:ethr')) {
-  //       throw new NotFoundException(
-  //         `Issuer Identifier<${credentialData.issuerDid}> is not compatible with EthrRevocationRegistry. Supply necessary ldap revocation info instead.`
-  //       )
-  //     }
-
-  //     const identifier = await veramoAgent.didManagerGet({
-  //       did: issuerDid,
-  //     })
-  //     const chainId = this.config?.get('revocation.chain.dev') ? '1337' : this.config?.get('revocation.chain.id')
-  //     const registry = this.config?.get('revocation.chain.dev')
-  //       ? this.ganache?.getRegistry().address
-  //       : getRevocationRegistryDeploymentAddress(chainId)
-  //     const namespace = toEthereumAddress(identifier.controllerKeyId!)
-  //     // TODO: WE HARDCODE THIS STUFF FOR NOW EXCHANGE PLS
-  //     const revocationList = web3.utils.keccak256('revocationList')
-  //     // The revocation key is the keccak256 hash of the credentialId
-  //     const revocationKey = web3.utils.keccak256(`https://app.caro.vc/credentials/${credentialData.credentialId}`)
-
-  //     credentialPayload['@context']!.push(
-  //       'https://spherity.github.io/vc-ethr-revocation-registry/schemas/ethr-revocation-registry.jsonld'
-  //     )
-  //     credentialPayload.credentialStatus = {
-  //       id: `https://app.caro.vc/credentials/${credentialData.credentialId}`,
-  //       type: 'EthrRevocationRegistry2022',
-  //       registry: registry,
-  //       chainId: chainId,
-  //       namespace: namespace,
-  //       revocationList: revocationList,
-  //       revocationKey: revocationKey,
-  //     }
-  //   }
-
-  //   let vc = {} as VerifiableCredential
-
-  //   const issueInFuture = new Date() < issuesAt
-  //   const expiredInPast = new Date() > expiresAt
-
-  //   let nowOverride = new Date()
-
-  //   if (issueInFuture) {
-  //     nowOverride = issuesAt
-  //   }
-
-  //   if (expiredInPast) {
-  //     // The low level VC lib does a check like this:
-  //     // if(now > new Date(expirationDate)) ...
-  //     // Therefore we have to remove 1 day from the nowOverride to it tricks the lib into thinking the expiredDate is OK
-  //     // We don't want that it checks this at all but there is no option to turn these checks off.
-  //     nowOverride = new Date(new Date(expiresAt.getTime() - 1000 * 60 * 60 * 24))
-  //   }
-
-  //   vc = await veramoAgent.createVerifiableCredential(
-  //     {
-  //       credential: credentialPayload,
-  //       proofFormat: 'lds',
-  //       now: nowOverride,
-  //     },
-  //     { agent: veramoAgent.agent } as any
-  //   )
-  //   return vc
-  // }
+  public static getMachineConfig() {
+    return new this(
+      () => {},
+      () => {}
+    ).stateMachineConfiguration
+  }
 }

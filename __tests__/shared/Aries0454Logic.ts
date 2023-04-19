@@ -23,7 +23,7 @@ export default (testContext: {
   tearDown: () => Promise<boolean>
 }) => {
   describe('present proof v2 aries exchange 0454', () => {
-    const aries0454Machine = interpret(new PresentProof0454MessageHandler().stateMachineConfiguration)
+    const aries0454Machine = interpret(PresentProof0454MessageHandler.getMachineConfig())
 
     const sendRequestMock = jest
       .spyOn(PresentProof0454MessageHandler.prototype as any, 'sendRequest')

@@ -12,12 +12,12 @@
   },
   "scripts": {
     "build": "tsc",
-    "generate-plugin-schema": "yarn veramo dev generate-plugin-schema",
+    "generate-plugin-schema": "npm veramo dev generate-plugin-schema",
     "start": "veramo server",
     "build:watch": "tsc -b --watch",
-    "test:ci": "yarn test --coverage=true",
+    "test:ci": "npm test --coverage=true",
     "test": "cross-env NODE_OPTIONS=\"--experimental-vm-modules\" jest",
-    "test:watch": "yarn test --watch --verbose",
+    "test:watch": "npm test --watch --verbose",
     "clean": "rm -rf tmp && rm database.sqlite && rm -rf build && rm tsconfig.tsbuildinfo"
   },
   "license": "MIT",

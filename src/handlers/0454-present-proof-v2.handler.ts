@@ -95,8 +95,12 @@ const METADATA_AIP_RECEIVED_MESSAGE = 'AIP_RECEIVED_MESSAGE'
  *
  */
 export class PresentProof0454MessageHandler extends AbstractMessageHandler {
-  constructor() {
+  private createPresentationFunction: Function
+  private verifyPresentationFunction: Function
+  constructor(createPresentationCallback: Function, verifyPresentationCallback: Function) {
     super()
+    this.createPresentationFunction = createPresentationCallback
+    this.verifyPresentationFunction = verifyPresentationCallback
   }
 
   get stateMachineConfiguration(): StateMachine<any, any, any> {
@@ -636,7 +640,7 @@ export class PresentProof0454MessageHandler extends AbstractMessageHandler {
 
     // DO a basic check for the credential data received with rules and stuff and then send credential request
 
-    // const presentation = await this.createPresentation(fromDid, event.message.data.credentialType, veramoAgent)
+    const presentation = await this.createPresentationFunction(fromDid, event.message.data.credentialType)
 
     const ariesPresentation = {
       '@id': messageId,
@@ -644,7 +648,7 @@ export class PresentProof0454MessageHandler extends AbstractMessageHandler {
       '~thread': { thid: ariesThreadId },
       '~please_ack': expectingAck,
       goal_code: '<goal-code>',
-      // presentation: presentation,
+      presentation: presentation,
       comment: 'here is your presentation',
     }
 
@@ -677,16 +681,16 @@ export class PresentProof0454MessageHandler extends AbstractMessageHandler {
     const veramoAgent: VeramoAgent = event.veramoAgent
 
     try {
-      // const verifiedPresentation = await this.verifyPresentation(message.data.presentation, veramoAgent)
+      const verifiedPresentation = await this.verifyPresentationFunction(message.data.presentation)
       // If need to send Ack write the code for it below here
 
-      // if (verifiedPresentation.verified === true) {
-      //   // TODO we have to decide when to send acknowledge
-      //   if (message.data['~please_ack']) {
-      //     await this.sendAck(event)
-      //   }
-      //   return
-      // }
+      if (verifiedPresentation.verified === true) {
+        // TODO we have to decide when to send acknowledge
+        if (message.data['~please_ack']) {
+          await this.sendAck(event)
+        }
+        return
+      }
 
       // it is not verified therefore we throw an error and send a problem report
       throw {
@@ -913,81 +917,10 @@ export class PresentProof0454MessageHandler extends AbstractMessageHandler {
     }
   }
 
-  // private async createPresentation(holderDid: string, credentialType: CredentialType, veramoAgent: VeramoAgent) {
-  //   const holderIdentifier = await this.prisma?.identifier.findFirst({
-  //     where: { did: holderDid },
-  //     orderBy: { createdAt: 'desc' },
-  //   })
-
-  //   if (!holderIdentifier) {
-  //     throw new NotFoundException(`Identifier<${holderDid}> was not found`)
-  //   }
-
-  //   if (!holderIdentifier.tenantId) {
-  //     throw new BadRequestException(`Identifier<${holderDid}> is not part of a tenant`)
-  //   }
-
-  //   const credentials = await this.prisma?.credential.findMany({
-  //     where: {
-  //       tenantId: holderIdentifier.tenantId,
-  //       type: credentialType,
-  //       data: {
-  //         path: ['credentialSubject', 'id'],
-  //         equals: holderDid,
-  //       },
-  //     },
-  //     orderBy: { createdAt: 'desc' },
-  //   })
-
-  //   if (credentials?.length == 0) {
-  //     throw new NotFoundException(`Identifier<${holderDid}> has no credential of CredentialType<${credentialType}>`)
-  //   }
-
-  //   const currentIdentityCredential = credentials?.find(async (credential) => {
-  //     const status = await veramoAgent.checkCredentialStatus(
-  //       { credential: credential.data as CredentialJwtOrJSON },
-  //       {} as any
-  //     )
-  //     // TODO: Expiration check
-  //     if (!status.revoked) return credential
-  //   })
-
-  //   if (!currentIdentityCredential) {
-  //     throw new NotFoundException(
-  //       `Identifier<${holderDid}> has no valid credential of CredentialType<${credentialType}>`
-  //     )
-  //   }
-
-  //   const issuanceDate = new Date()
-  //   const presentation = await veramoAgent.createVerifiablePresentation(
-  //     {
-  //       presentation: {
-  //         verifiableCredential: [currentIdentityCredential.data as W3CVerifiableCredential],
-  //         holder: holderDid,
-  //         issuanceDate: issuanceDate.toISOString(),
-  //       },
-  //       proofFormat: 'jwt',
-  //     },
-  //     {} as any
-  //   )
-  //   return presentation.proof.jwt
-  // }
-
-  // private async verifyPresentation(verifiablePresentation: any, veramoAgent: VeramoAgent) {
-  //   const verificationResponse = await veramoAgent.verifyPresentation(
-  //     {
-  //       presentation: verifiablePresentation,
-  //       // We only want to check the signature and its general validity
-  //       // The rest we handle manually to throw the correct OCI error codes
-  //       policies: {
-  //         issuanceDate: false,
-  //         expirationDate: false,
-  //         aud: false,
-  //       },
-  //     },
-  //     {} as any
-  //   )
-
-  //   return verificationResponse
-  // }
+  public static getMachineConfig() {
+    return new this(
+      () => {},
+      () => {}
+    ).stateMachineConfiguration
+  }
 }
