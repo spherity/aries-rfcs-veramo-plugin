@@ -23,7 +23,6 @@ import {
 } from './handlers/0454-present-proof-v2.handler'
 import {
   IAriesRFCsPlugin,
-  IMyAgentPluginFooResult,
   IRequiredContext,
   MESSAGE_TYPES_0453,
   MESSAGE_TYPES_0454,

@@ -1,26 +1,8 @@
 import { IPluginMethodMap, IAgentContext, IDIDManager, IResolver } from '@veramo/core'
 
 /**
- * My Agent Plugin description.
- *
- * This is the interface that describes what your plugin can do.
- * The methods listed here, will be directly available to the veramo agent where your plugin is going to be used.
- * Depending on the agent configuration, other agent plugins, as well as the application where the agent is used
- * will be able to call these methods.
- *
- * To build a schema for your plugin using standard tools, you must link to this file in your package.json.
- * Example:
- * ```
- * "veramo": {
- *    "pluginInterfaces": {
- *      "IMyAgentPlugin": "./src/types/IMyAgentPlugin.ts"
- *    }
- *  },
- * ```
- *
- * @beta
+ * Message types for the O453 present proof ARIES flow
  */
-
 export enum MESSAGE_TYPES_0453 {
   PROPOSE_CREDENTIAL = 'https://didcomm.org/issue-credential/2.1/propose-credential',
   OFFER_CREDENTIAL = 'https://didcomm.org/issue-credential/2.1/offer-credential',
@@ -30,6 +12,9 @@ export enum MESSAGE_TYPES_0453 {
   COMPLETE = 'https://didcomm.org/issue-credential/2.1/complete',
 }
 
+/**
+ * Message types for the O454 present proof ARIES flow
+ */
 export enum MESSAGE_TYPES_0454 {
   PROPOSE_PRESENTATION = 'https://didcomm.org/present-proof/2.2/propose-presentation',
   REQUEST_PRESENTATION = 'https://didcomm.org/present-proof/2.2/request-presentation',
@@ -38,6 +23,11 @@ export enum MESSAGE_TYPES_0454 {
   ACK = 'https://didcomm.org/notification/1.0/ack',
 }
 
+/**
+ * Plugin implementation of Aries RFC flows to allow sending of DIDCOMM messages as defined in the spec
+ * 
+ * @Beta
+ */
 export interface IAriesRFCsPlugin extends IPluginMethodMap {
   /**
    * Your plugin method description
@@ -46,14 +36,45 @@ export interface IAriesRFCsPlugin extends IPluginMethodMap {
    * @param context - The required context where this method can run.
    *   Declaring a context type here lets other developers know which other plugins
    *   need to also be installed for this method to work.
+   * @returns The response of this function
    */
   send0023(args: Send0023MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse>
+
+  /**
+   * Your plugin method description
+   *
+   * @param args - Input parameters for this method
+   * @param context - The required context where this method can run.
+   *   Declaring a context type here lets other developers know which other plugins
+   *   need to also be installed for this method to work.
+   * @returns The response of this function
+   */
   send0453(args: Send0453MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse>
+
+  /**
+   * Your plugin method description
+   *
+   * @param args - Input parameters for this method
+   * @param context - The required context where this method can run.
+   *   Declaring a context type here lets other developers know which other plugins
+   *   need to also be installed for this method to work.
+   * @returns The response of this function
+   */
   send0454(args: Send0454MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse>
 }
 
+
+/**
+ * Generic type of message Attr
+ */
 interface SendMessageAttr {
+  /**
+   * The sender of the message or initiator of the protocol
+   */
   from: string
+  /**
+   * The receiver of the first message 
+   */
   to: string
 }
 
@@ -76,41 +97,6 @@ export interface Send0454MessageAttr extends SendMessageAttr {
   packingType: DIDCommMessagePacking
 }
 
-/**
- * Arguments needed for {@link MyAgentPlugin.myPluginFoo}
- * To be able to export a plugin schema, your plugin methods should use an `args` parameter of a
- * named type or interface.
- *
- * @beta
- */
-export interface IMyAgentPluginFooArgs {
-  /**
-   * Decentralized identifier
-   */
-  did: string
-
-  /**
-   * Lorem ipsum
-   */
-  bar: string
-
-  /**
-   * Dolorem
-   */
-  foo: string
-}
-
-/**
- * Result of {@link MyAgentPlugin.myPluginFoo}
- * To be able to export a plugin schema, your plugin return types need to be Promises of a
- * named type or interface.
- *
- * @beta
- */
-export type IMyAgentPluginFooResult = {
-  foobar?: string
-  baz?: any
-}
 
 /**
  * Result of {@link AriesRFCsPlugin.[send_Messages]}
