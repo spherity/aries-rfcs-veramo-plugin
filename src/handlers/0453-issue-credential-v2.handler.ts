@@ -749,7 +749,7 @@ export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
     let createdCredential
 
     try {
-      createdCredential = await this.issueCredentialFunction(credential_preview, fromDid, toDid)
+      createdCredential = await this.issueCredentialFunction(credential_preview, fromDid, toDid, veramoAgent)
     } catch (e: any) {
       throw Error(e)
     }
@@ -807,7 +807,7 @@ export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
     const credential = message.data.credentials[0]
 
     try {
-      this.receiveCredentialFunction(credential)
+      await this.receiveCredentialFunction(fromDid, credential, message)
 
       // If need to send Ack please create a merge request for it.
     } catch (e: any) {
