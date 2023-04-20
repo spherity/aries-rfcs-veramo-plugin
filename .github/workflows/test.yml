@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 18
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - run: yarn generate-plugin-schema
-      - run: yarn test:ci
+      - run: npm ci
+      - run: npm run build
+      - run: npm run generate-plugin-schema
+      - run: npm run test:ci
