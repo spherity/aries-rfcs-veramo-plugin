@@ -640,7 +640,7 @@ export class PresentProof0454MessageHandler extends AbstractMessageHandler {
 
     // DO a basic check for the credential data received with rules and stuff and then send credential request
 
-    const presentation = await this.createPresentationFunction(fromDid, event.message.data.credentialType)
+    const presentation = await this.createPresentationFunction(fromDid, event.message.data.credentialType, veramoAgent)
 
     const ariesPresentation = {
       '@id': messageId,
@@ -681,7 +681,7 @@ export class PresentProof0454MessageHandler extends AbstractMessageHandler {
     const veramoAgent: VeramoAgent = event.veramoAgent
 
     try {
-      const verifiedPresentation = await this.verifyPresentationFunction(message.data.presentation)
+      const verifiedPresentation = await this.verifyPresentationFunction(message.data.presentation, veramoAgent)
       // If need to send Ack write the code for it below here
 
       if (verifiedPresentation.verified === true) {
