@@ -1,17 +1,18 @@
-// noinspection ES6PreferShortImport
+/* istanbul ignore file */
+import {
+  ChildMachineState_Offer,
+  ChildMachineState_Request,
+  IssueCredential0453MessageHandler,
+  MachineState_0453,
+  Transition_0453,
+} from '../../src/handlers/0453-issue-credential-v2.handler'
 import { interpret } from 'xstate'
 import { randomUUID } from 'crypto'
 import { VeramoAgent } from '../../src/types/VeramoAgent'
 import { waitFor } from 'xstate/lib/waitFor'
+
 import { TAgent, IMessageHandler } from '@veramo/core'
 import { IAriesRFCsPlugin } from '../../src/types/IAriesRFCsPlugin'
-import {
-  IssueCredential0453MessageHandler,
-  Transition_0453,
-  MachineState_0453,
-  ChildMachineState_Offer,
-  ChildMachineState_Request,
-} from '../../src/handlers/0453-issue-credential-v2.handler'
 
 import { jest } from '@jest/globals'
 import { getRandomString } from '../utils/utils'
@@ -57,7 +58,9 @@ export default (testContext: {
 
     it('should [send offer] on [start]', async () => {
       aries0453Machine.start()
-
+      jest
+        .spyOn(IssueCredential0453MessageHandler.prototype as any, 'sendOffer')
+        .mockImplementation(() => Promise.resolve())
       aries0453Machine.send({
         type: Transition_0453.SendOffer,
         fromDid: getRandomString(),

@@ -61,7 +61,7 @@ export class AriesRFCsPlugin implements IAgentPlugin {
   }
 
   /** {@inheritDoc IMyAgentPlugin.myPluginFoo} */
-  private async send0023(args: Send0023MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse> {
+  public async send0023(args: Send0023MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse> {
     // you can call other agent methods (that are declared in the `IRequiredContext`)
     const protocol0023 = interpret(DidExchange0023MessageHandler.getMachineConfig())
     const threadId = randomUUID()
@@ -107,7 +107,7 @@ export class AriesRFCsPlugin implements IAgentPlugin {
   }
 
   /** {@inheritDoc IMyAgentPlugin.myPluginFoo} */
-  private async send0453(args: Send0453MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse> {
+  public async send0453(args: Send0453MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse> {
     const protocol0453 = interpret(IssueCredential0453MessageHandler.getMachineConfig())
     const threadId = randomUUID()
     const veramoAgent = context.agent
@@ -188,7 +188,7 @@ export class AriesRFCsPlugin implements IAgentPlugin {
   }
 
   /** {@inheritDoc IMyAgentPlugin.myPluginFoo} */
-  private async send0454(args: Send0454MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse> {
+  public async send0454(args: Send0454MessageAttr, context: IRequiredContext): Promise<SendRFCsResponse> {
     // you can call other agent methods (that are declared in the `IRequiredContext`)
     const protocol0454 = interpret(PresentProof0454MessageHandler.getMachineConfig())
     const threadId = randomUUID()

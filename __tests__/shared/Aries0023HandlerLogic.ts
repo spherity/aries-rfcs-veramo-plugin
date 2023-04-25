@@ -1,4 +1,4 @@
-// noinspection ES6PreferShortImport
+/* istanbul ignore file */
 import {
   ChildMachineState_Invitation,
   DidExchange0023MessageHandler,
@@ -9,8 +9,10 @@ import { interpret } from 'xstate'
 import { randomUUID } from 'crypto'
 import { VeramoAgent } from '../../src/types/VeramoAgent'
 import { waitFor } from 'xstate/lib/waitFor'
+
 import { TAgent, IMessageHandler } from '@veramo/core'
 import { IAriesRFCsPlugin } from '../../src/types/IAriesRFCsPlugin'
+
 import { jest } from '@jest/globals'
 
 type ConfiguredAgent = TAgent<IAriesRFCsPlugin & IMessageHandler>
@@ -52,6 +54,9 @@ export default (testContext: {
 
     it('should [send invitation] on [start]', async () => {
       aries0023Machine.start()
+      jest
+        .spyOn(DidExchange0023MessageHandler.prototype as any, 'sendInvitation')
+        .mockImplementation(() => Promise.resolve())
 
       aries0023Machine.send({
         type: Transition_0023.SendInvitation,
@@ -77,7 +82,9 @@ export default (testContext: {
 
     it('should [send request] on [receive invitation]', async () => {
       aries0023Machine.start()
-
+      jest
+        .spyOn(DidExchange0023MessageHandler.prototype as any, 'sendRequest')
+        .mockImplementation(() => Promise.resolve())
       aries0023Machine.send({
         type: Transition_0023.ReceiveInvitation,
         message: {} as any,
@@ -91,7 +98,9 @@ export default (testContext: {
 
     it('should [send response] on [receive request]', async () => {
       aries0023Machine.start(MachineState_0023.InvitationSent)
-
+      jest
+        .spyOn(DidExchange0023MessageHandler.prototype as any, 'sendResponse')
+        .mockImplementation(() => Promise.resolve())
       aries0023Machine.send({
         type: Transition_0023.ReceiveRequest,
         message: {} as any,
@@ -105,7 +114,9 @@ export default (testContext: {
 
     it('should [send complete] on [receive response]', async () => {
       aries0023Machine.start(MachineState_0023.RequestSent)
-
+      jest
+        .spyOn(DidExchange0023MessageHandler.prototype as any, 'sendComplete')
+        .mockImplementation(() => Promise.resolve())
       aries0023Machine.send({
         type: Transition_0023.ReceiveResponse,
         message: {} as any,
