@@ -1,9 +1,9 @@
-import { TAgent, IMessageHandler, IDIDManager, ICredentialPlugin } from '@veramo/core-types'
-import { IMyAgentPlugin } from '../../src/types/IMyAgentPlugin.js'
+import { TAgent, IMessageHandler, IDIDManager, ICredentialPlugin } from '@veramo/core'
+import { IAriesRFCsPlugin } from '../../src/types/IAriesRFCsPlugin'
 
 import { jest } from '@jest/globals'
 
-type ConfiguredAgent = TAgent<IMyAgentPlugin & IMessageHandler & IDIDManager & ICredentialPlugin>
+type ConfiguredAgent = TAgent<IAriesRFCsPlugin & IMessageHandler & IDIDManager & ICredentialPlugin>
 
 export default (testContext: {
   getAgent: () => ConfiguredAgent

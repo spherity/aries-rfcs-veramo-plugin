@@ -7,7 +7,7 @@ import {
 } from '../../src/handlers/0023-did-exchange.handler'
 import { interpret } from 'xstate'
 import { randomUUID } from 'crypto'
-import { VeramoAgent } from '../../src/types/IAriesRFCsPlugin'
+import { VeramoAgent } from '../../src/types/VeramoAgent'
 import { waitFor } from 'xstate/lib/waitFor'
 import { TAgent, IMessageHandler } from '@veramo/core'
 import { IAriesRFCsPlugin } from '../../src/types/IAriesRFCsPlugin'
