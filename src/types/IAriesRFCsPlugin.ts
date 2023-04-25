@@ -1,4 +1,5 @@
-import { IPluginMethodMap, IAgentContext, IDIDManager, IResolver } from '@veramo/core'
+import { IPluginMethodMap, IAgentContext, IDIDManager, IResolver, IKeyManager, IDataStore, IDataStoreORM, ICredentialIssuer, IMessageHandler } from '@veramo/core'
+import { DIDCommMessagePacking, IDIDComm } from '@veramo/did-comm'
 
 /**
  * Message types for the O453 present proof ARIES flow
@@ -110,11 +111,14 @@ export type SendRFCsResponse = {
   protocolState: string
 }
 
-export enum DIDCommMessagePacking {
-  NONE = 'none',
-  JWS = 'jws',
-  AUTHCRYPT = 'authcrypt',
-}
+type VeramoAgent = IDIDManager &
+IKeyManager &
+IDataStore &
+IDataStoreORM &
+IResolver &
+ICredentialIssuer &
+IMessageHandler &
+IDIDComm;
 
 /**
  * This context describes the requirements of this plugin.
@@ -124,4 +128,4 @@ export enum DIDCommMessagePacking {
  *
  * @beta
  */
-export type IRequiredContext = IAgentContext<IResolver & IDIDManager>
+export type IRequiredContext = IAgentContext<VeramoAgent>

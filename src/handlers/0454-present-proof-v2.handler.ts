@@ -6,10 +6,8 @@ import { createMachine, interpret, Interpreter, StateMachine } from 'xstate'
 import { randomUUID } from 'crypto'
 import { waitFor } from 'xstate/lib/waitFor'
 import { IDIDCommMessage } from '@veramo/did-comm/src/types/message-types'
-import { VeramoAgent } from '../types/VeramoAgent'
-import { DIDCommMessagePacking } from '../types/IAriesRFCsPlugin'
+import { VeramoAgent, IContext } from '../types/VeramoAgent'
 
-type IContext = IAgentContext<IDIDManager & IKeyManager & IDIDComm & IDataStore & IDataStoreORM>
 
 export enum MESSAGE_TYPES_0454 {
   PROPOSE_PRESENTATION = 'https://didcomm.org/present-proof/2.2/propose-presentation',
@@ -837,7 +835,7 @@ export class PresentProof0454MessageHandler extends AbstractMessageHandler {
     try {
       const packedMessage = await veramoAgent.packDIDCommMessage(
         {
-          packing: DIDCommMessagePacking.AUTHCRYPT,
+          packing: "authcrypt",
           message: message,
         },
         {} as any

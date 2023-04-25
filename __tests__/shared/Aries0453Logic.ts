@@ -1,7 +1,7 @@
 // noinspection ES6PreferShortImport
 import { interpret } from 'xstate'
 import { randomUUID } from 'crypto'
-import { VeramoAgent } from '../../src/types/VeramoAgent'
+import { VeramoAgent } from '../../src/types/IAriesRFCsPlugin'
 import { waitFor } from 'xstate/lib/waitFor'
 import { TAgent, IMessageHandler } from '@veramo/core'
 import { IAriesRFCsPlugin } from '../../src/types/IAriesRFCsPlugin'

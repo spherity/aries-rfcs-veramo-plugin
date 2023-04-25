@@ -6,10 +6,7 @@ import { createMachine, interpret, Interpreter, StateMachine } from 'xstate'
 import { randomUUID } from 'crypto'
 import { waitFor } from 'xstate/lib/waitFor'
 import { IDIDCommMessage } from '@veramo/did-comm/src/types/message-types'
-import { VeramoAgent } from '../types/VeramoAgent'
-import { DIDCommMessagePacking } from '../types/IAriesRFCsPlugin'
-
-type IContext = IAgentContext<IDIDManager & IKeyManager & IDIDComm & IDataStore & IDataStoreORM>
+import { VeramoAgent, IContext } from '../types/VeramoAgent'
 
 enum MESSAGE_TYPE {
   INVITATION = 'https://didcomm.org/out-of-band/1.1/invitation',
@@ -491,7 +488,7 @@ export class DidExchange0023MessageHandler extends AbstractMessageHandler {
       to: toDid,
       thid: invitation.threadId,
       body: ariesRequestMessage,
-      packingType: DIDCommMessagePacking.AUTHCRYPT,
+      packingType: "authcrypt",
     }
 
     await this.storeMessage(
@@ -706,7 +703,7 @@ export class DidExchange0023MessageHandler extends AbstractMessageHandler {
     try {
       const packedMessage = await veramoAgent.packDIDCommMessage(
         {
-          packing: DIDCommMessagePacking.AUTHCRYPT,
+          packing: "authcrypt",
           message: message,
         },
         {} as any

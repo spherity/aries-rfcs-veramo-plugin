@@ -6,10 +6,7 @@ import { createMachine, interpret, Interpreter, StateMachine } from 'xstate'
 import { randomUUID } from 'crypto'
 import { waitFor } from 'xstate/lib/waitFor'
 import { IDIDCommMessage } from '@veramo/did-comm/src/types/message-types'
-import { VeramoAgent } from '../types/VeramoAgent'
-import { DIDCommMessagePacking } from '../types/IAriesRFCsPlugin'
-
-type IContext = IAgentContext<IDIDManager & IKeyManager & IDIDComm & IDataStore & IDataStoreORM>
+import { VeramoAgent, IContext } from '../types/VeramoAgent'
 
 export enum MESSAGE_TYPES_0453 {
   PROPOSE_CREDENTIAL = 'https://didcomm.org/issue-credential/2.1/propose-credential',
@@ -892,7 +889,7 @@ export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
     try {
       const packedMessage = await veramoAgent.packDIDCommMessage(
         {
-          packing: DIDCommMessagePacking.AUTHCRYPT,
+          packing: "authcrypt",
           message: message,
         },
         {} as any
