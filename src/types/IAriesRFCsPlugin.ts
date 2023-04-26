@@ -1,5 +1,6 @@
 import { IPluginMethodMap, IAgentContext, IDIDManager, IResolver, IKeyManager, IDataStore, IDataStoreORM, ICredentialIssuer, IMessageHandler } from '@veramo/core'
 import { DIDCommMessagePacking, IDIDComm } from '@veramo/did-comm'
+import { VeramoAgent } from './VeramoAgent'
 
 /**
  * Message types for the O453 present proof ARIES flow
@@ -66,7 +67,7 @@ export interface IAriesRFCsPlugin extends IPluginMethodMap {
 
 
 /**
- * Generic type of message Attr
+ * Generic type of messages
  */
 interface SendMessageAttr {
   /**
@@ -81,19 +82,38 @@ interface SendMessageAttr {
 
 export interface Send0023MessageAttr extends SendMessageAttr {}
 export interface Send0453MessageAttr extends SendMessageAttr {
+  /**
+   * The type of message
+   * {@link MESSAGE_TYPES_0453}
+   */
   type: MESSAGE_TYPES_0453
+
   message: {
+
     '@type': MESSAGE_TYPES_0453
-    [key: string]: string
+
+    /**
+     * Other attributes of the message
+     */
+    [key: string]: string | number | Object
   }
   packingType: DIDCommMessagePacking
 }
 
 export interface Send0454MessageAttr extends SendMessageAttr {
+  /**
+   * The type of message
+   * {@link MESSAGE_TYPES_0453}
+   */
   type: MESSAGE_TYPES_0454
+
   message: {
     '@type': MESSAGE_TYPES_0454
-    [key: string]: string
+
+    /**
+     * Other attributes of the message
+     */
+    [key: string]: string | number | Object
   }
   packingType: DIDCommMessagePacking
 }
@@ -101,30 +121,28 @@ export interface Send0454MessageAttr extends SendMessageAttr {
 
 /**
  * Result of {@link AriesRFCsPlugin.[send_Messages]}
- * To be able to export a plugin schema, your plugin return types need to be Promises of a
- * named type or interface.
+ * This is the result type of sending an RFC message or initiating an RFC protocol successfully
  *
  * @beta
  */
 export type SendRFCsResponse = {
+  
+  /**
+   * The thread ID for the initiated protocol (exchange)
+   */
   threadId: string
+
+  /**
+   * The state of the protocol after initiated
+   */
   protocolState: string
 }
 
-type VeramoAgent = IDIDManager &
-IKeyManager &
-IDataStore &
-IDataStoreORM &
-IResolver &
-ICredentialIssuer &
-IMessageHandler &
-IDIDComm;
 
 /**
  * This context describes the requirements of this plugin.
  * For this plugin to function properly, the agent needs to also have other plugins installed that implement the
  * interfaces declared here.
- * You can also define requirements on a more granular level, for each plugin method or event handler of your plugin.
  *
  * @beta
  */
