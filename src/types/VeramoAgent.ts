@@ -10,7 +10,10 @@ import {
 } from '@veramo/core'
 import {IDIDComm } from '@veramo/did-comm'
 
-
+/**
+ * Veramo plugins used by this plugin.
+ * @beta
+ */
 export type VeramoAgent = IDIDManager &
 IKeyManager &
 IDataStore &

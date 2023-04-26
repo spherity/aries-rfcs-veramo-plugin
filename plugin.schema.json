@@ -23,17 +23,19 @@
           "type": "object",
           "properties": {
             "threadId": {
-              "type": "string"
+              "type": "string",
+              "description": "The thread ID for the initiated protocol (exchange)"
             },
             "protocolState": {
-              "type": "string"
+              "type": "string",
+              "description": "The state of the protocol after initiated"
             }
           },
           "required": [
             "threadId",
             "protocolState"
           ],
-          "description": "Result of  {@link  AriesRFCsPlugin. [send_Messages] } \nTo be able to export a plugin schema, your plugin return types need to be Promises of a named type or interface."
+          "description": "Result of  {@link  AriesRFCsPlugin. [send_Messages] } \nThis is the result type of sending an RFC message or initiating an RFC protocol successfully"
         },
         "Send0453MessageAttr": {
           "type": "object",
@@ -47,7 +49,8 @@
               "description": "The receiver of the first message"
             },
             "type": {
-              "$ref": "#/components/schemas/MESSAGE_TYPES_0453"
+              "$ref": "#/components/schemas/MESSAGE_TYPES_0453",
+              "description": "The type of message\n {@link  MESSAGE_TYPES_0453 }"
             },
             "message": {
               "type": "object",
@@ -60,7 +63,42 @@
                 "@type"
               ],
               "additionalProperties": {
-                "type": "string"
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "constructor": {
+                        "type": "object",
+                        "properties": {
+                          "prototype": {},
+                          "length": {
+                            "type": "number"
+                          },
+                          "arguments": {},
+                          "caller": {
+                            "$ref": "#/components/schemas/interface-731470504-10057-11521-731470504-0-217681"
+                          }
+                        },
+                        "required": [
+                          "prototype",
+                          "length",
+                          "arguments",
+                          "caller"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "constructor"
+                    ]
+                  }
+                ],
+                "description": "Other attributes of the message"
               }
             },
             "packingType": {
@@ -87,13 +125,36 @@
           ],
           "description": "Message types for the O453 present proof ARIES flow"
         },
+        "interface-731470504-10057-11521-731470504-0-217681": {
+          "type": "object",
+          "properties": {
+            "prototype": {},
+            "length": {
+              "type": "number"
+            },
+            "arguments": {},
+            "caller": {
+              "$ref": "#/components/schemas/interface-731470504-10057-11521-731470504-0-217681"
+            }
+          },
+          "required": [
+            "prototype",
+            "length",
+            "arguments",
+            "caller"
+          ]
+        },
         "DIDCommMessagePacking": {
           "type": "string",
           "enum": [
-            "none",
+            "authcrypt",
+            "anoncrypt",
             "jws",
-            "authcrypt"
-          ]
+            "none",
+            "anoncrypt+authcrypt",
+            "anoncrypt+jws"
+          ],
+          "description": "The possible types of message packing.\n\n`authcrypt`, `anoncrypt`, `anoncrypt+authcrypt`, and `anoncrypt+jws` will produce `DIDCommMessageMediaType.ENCRYPTED` messages.\n\n`jws` will produce `DIDCommMessageMediaType.SIGNED` messages.\n\n`none` will produce `DIDCommMessageMediaType.PLAIN` messages."
         },
         "Send0454MessageAttr": {
           "type": "object",
@@ -107,7 +168,8 @@
               "description": "The receiver of the first message"
             },
             "type": {
-              "$ref": "#/components/schemas/MESSAGE_TYPES_0454"
+              "$ref": "#/components/schemas/MESSAGE_TYPES_0454",
+              "description": "The type of message\n {@link  MESSAGE_TYPES_0453 }"
             },
             "message": {
               "type": "object",
@@ -120,7 +182,42 @@
                 "@type"
               ],
               "additionalProperties": {
-                "type": "string"
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "constructor": {
+                        "type": "object",
+                        "properties": {
+                          "prototype": {},
+                          "length": {
+                            "type": "number"
+                          },
+                          "arguments": {},
+                          "caller": {
+                            "$ref": "#/components/schemas/interface-731470504-10057-11521-731470504-0-217681"
+                          }
+                        },
+                        "required": [
+                          "prototype",
+                          "length",
+                          "arguments",
+                          "caller"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "constructor"
+                    ]
+                  }
+                ],
+                "description": "Other attributes of the message"
               }
             },
             "packingType": {

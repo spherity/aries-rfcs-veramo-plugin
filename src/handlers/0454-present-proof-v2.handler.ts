@@ -1,7 +1,4 @@
 import { AbstractMessageHandler, Message } from '@veramo/message-handler'
-import { IAgentContext, IDataStore, IDIDManager, IKeyManager, W3CVerifiableCredential } from '@veramo/core'
-import { IDIDComm } from '@veramo/did-comm/src/types/IDIDComm'
-import { IDataStoreORM } from '@veramo/data-store'
 import { createMachine, interpret, Interpreter, StateMachine } from 'xstate'
 import { randomUUID } from 'crypto'
 import { waitFor } from 'xstate/lib/waitFor'
@@ -91,6 +88,12 @@ const METADATA_AIP_RECEIVED_MESSAGE = 'AIP_RECEIVED_MESSAGE'
  * │                    │
  * └────────────────────┘
  *
+ */
+
+/**
+ * This class handles the ARIES 0454 protocol (present proof flow)
+ *
+ * @beta
  */
 export class PresentProof0454MessageHandler extends AbstractMessageHandler {
   private createPresentationFunction: Function

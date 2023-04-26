@@ -1,7 +1,4 @@
 import { AbstractMessageHandler, Message } from '@veramo/message-handler'
-import { IAgentContext, IDataStore, IDIDManager, IKeyManager } from '@veramo/core'
-import { IDIDComm } from '@veramo/did-comm/src/types/IDIDComm'
-import { IDataStoreORM } from '@veramo/data-store'
 import { createMachine, interpret, Interpreter, StateMachine } from 'xstate'
 import { randomUUID } from 'crypto'
 import { waitFor } from 'xstate/lib/waitFor'
@@ -79,6 +76,12 @@ const METADATA_AIP_IN_RESPONSE_TO = 'AIP_IN_RESPONSE_TO'
  * │                    │
  * └────────────────────┘
  *
+ */
+
+/**
+ * This class handles the ARIES 0923 protocol (DID exchange flow)
+ *
+ * @beta
  */
 export class DidExchange0023MessageHandler extends AbstractMessageHandler {
   get stateMachineConfiguration(): StateMachine<any, any, any> {

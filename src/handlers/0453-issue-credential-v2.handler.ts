@@ -1,7 +1,4 @@
 import { AbstractMessageHandler, Message } from '@veramo/message-handler'
-import { IAgentContext, IDataStore, IDIDManager, IKeyManager } from '@veramo/core'
-import { IDIDComm } from '@veramo/did-comm/src/types/IDIDComm'
-import { IDataStoreORM } from '@veramo/data-store'
 import { createMachine, interpret, Interpreter, StateMachine } from 'xstate'
 import { randomUUID } from 'crypto'
 import { waitFor } from 'xstate/lib/waitFor'
@@ -29,7 +26,7 @@ export enum MachineState_0453 {
   OfferSent = 'offer-sent',
   OfferReceived = 'offer-received',
   RequestSent = 'request-sent',
-  RequestReceived = 'request-received', // [2]Actionable because we received a request after an invitation and now need to answer
+  RequestReceived = 'request-received', 
   CredentialIssued = 'credential-issued',
   CredentialReceived = 'credential-received',
   Abandoned = 'abandoned',
@@ -97,6 +94,11 @@ const METADATA_AIP_RECEIVED_MESSAGE = 'AIP_RECEIVED_MESSAGE'
  * │                    │
  * └────────────────────┘
  *
+ */
+/**
+ * This class handles the ARIES 0453 protocol (issue credential flow)
+ *
+ * @beta
  */
 export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
   private issueCredentialFunction: Function

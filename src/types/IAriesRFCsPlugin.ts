@@ -1,9 +1,11 @@
-import { IPluginMethodMap, IAgentContext, IDIDManager, IResolver, IKeyManager, IDataStore, IDataStoreORM, ICredentialIssuer, IMessageHandler } from '@veramo/core'
-import { DIDCommMessagePacking, IDIDComm } from '@veramo/did-comm'
+import { IPluginMethodMap, IAgentContext } from '@veramo/core'
+import { DIDCommMessagePacking } from '@veramo/did-comm'
 import { VeramoAgent } from './VeramoAgent'
 
 /**
  * Message types for the O453 present proof ARIES flow
+ * 
+ * @beta
  */
 export enum MESSAGE_TYPES_0453 {
   PROPOSE_CREDENTIAL = 'https://didcomm.org/issue-credential/2.1/propose-credential',
@@ -16,6 +18,8 @@ export enum MESSAGE_TYPES_0453 {
 
 /**
  * Message types for the O454 present proof ARIES flow
+ * 
+ * @beta
  */
 export enum MESSAGE_TYPES_0454 {
   PROPOSE_PRESENTATION = 'https://didcomm.org/present-proof/2.2/propose-presentation',
@@ -28,7 +32,7 @@ export enum MESSAGE_TYPES_0454 {
 /**
  * Plugin implementation of Aries RFC flows to allow sending of DIDCOMM messages as defined in the spec
  * 
- * @Beta
+ * @beta
  */
 export interface IAriesRFCsPlugin extends IPluginMethodMap {
   /**
@@ -68,6 +72,8 @@ export interface IAriesRFCsPlugin extends IPluginMethodMap {
 
 /**
  * Generic type of messages
+ * 
+ * @beta
  */
 interface SendMessageAttr {
   /**
@@ -80,7 +86,14 @@ interface SendMessageAttr {
   to: string
 }
 
+/**
+ * @beta
+ */
 export interface Send0023MessageAttr extends SendMessageAttr {}
+
+/**
+ * @beta
+ */
 export interface Send0453MessageAttr extends SendMessageAttr {
   /**
    * The type of message
@@ -89,9 +102,7 @@ export interface Send0453MessageAttr extends SendMessageAttr {
   type: MESSAGE_TYPES_0453
 
   message: {
-
     '@type': MESSAGE_TYPES_0453
-
     /**
      * Other attributes of the message
      */
@@ -100,6 +111,9 @@ export interface Send0453MessageAttr extends SendMessageAttr {
   packingType: DIDCommMessagePacking
 }
 
+/**
+ * @beta
+ */
 export interface Send0454MessageAttr extends SendMessageAttr {
   /**
    * The type of message
