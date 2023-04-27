@@ -5,7 +5,6 @@ import { waitFor } from 'xstate/lib/waitFor'
 import { IDIDCommMessage } from '@veramo/did-comm/src/types/message-types'
 import { VeramoAgent, IContext } from '../types/VeramoAgent'
 
-
 export enum MESSAGE_TYPES_0454 {
   PROPOSE_PRESENTATION = 'https://didcomm.org/present-proof/2.2/propose-presentation',
   REQUEST_PRESENTATION = 'https://didcomm.org/present-proof/2.2/request-presentation',
@@ -593,7 +592,9 @@ export class PresentProof0454MessageHandler extends AbstractMessageHandler {
           },
         },
       ],
-      credentialType: event.message.credentialType,
+      options: {
+        credentialType: event.message.options.credentialType,
+      },
       comment: 'yes please give me the presentation',
     }
 
@@ -641,7 +642,7 @@ export class PresentProof0454MessageHandler extends AbstractMessageHandler {
 
     // DO a basic check for the credential data received with rules and stuff and then send credential request
 
-    const presentation = await this.createPresentationFunction(fromDid, event.message.data.credentialType, veramoAgent)
+    const presentation = await this.createPresentationFunction(fromDid, veramoAgent, event.message.data.options)
 
     const ariesPresentation = {
       '@id': messageId,
@@ -838,7 +839,7 @@ export class PresentProof0454MessageHandler extends AbstractMessageHandler {
     try {
       const packedMessage = await veramoAgent.packDIDCommMessage(
         {
-          packing: "authcrypt",
+          packing: 'authcrypt',
           message: message,
         },
         {} as any

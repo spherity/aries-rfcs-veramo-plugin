@@ -26,7 +26,7 @@ export enum MachineState_0453 {
   OfferSent = 'offer-sent',
   OfferReceived = 'offer-received',
   RequestSent = 'request-sent',
-  RequestReceived = 'request-received', 
+  RequestReceived = 'request-received',
   CredentialIssued = 'credential-issued',
   CredentialReceived = 'credential-received',
   Abandoned = 'abandoned',
@@ -649,7 +649,7 @@ export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
         credentialId: credentialMessage.credentialId,
         issuanceDate: credentialMessage.issuanceDate || undefined,
         expirationDate: credentialMessage.expirationDate || undefined,
-        credentialType: credentialMessage.credentialType,
+        credentialType: credentialMessage.credentialType || undefined,
         credentialStatusId: credentialMessage.credentialStatusId || undefined,
         onboardingId: credentialMessage.onboardingId || undefined,
       },
@@ -891,7 +891,7 @@ export class IssueCredential0453MessageHandler extends AbstractMessageHandler {
     try {
       const packedMessage = await veramoAgent.packDIDCommMessage(
         {
-          packing: "authcrypt",
+          packing: 'authcrypt',
           message: message,
         },
         {} as any
