@@ -2,7 +2,7 @@
 
 # Aries RFCs Veramo Plugin
 
-A DIDComm `[MessageHandlerPlugin](https://github.com/uport-project/veramo/tree/next/packages/message-handler)` plugin for the Veramo agent enabling it to send and handle DIDComm messages using the Hyperledger `[AriesRFCs](https://github.com/uport-project/veramo/tree/next/packages/credential-status)` workflows.`[@spherity/aries-rfcs-veramo-plugin](https://github.com/spherity/aries-rfcs-veramo-plugin)` contain message handlers that are based on aries flows and also contains methods that allow the initiation of those Aries Flows.
+A DIDComm [`MessageHandlerPlugin`](https://github.com/uport-project/veramo/tree/next/packages/message-handler) plugin for the Veramo agent enabling it to send and handle DIDComm messages using the Hyperledger [`AriesRFCs`](https://github.com/uport-project/veramo/tree/next/packages/credential-status) workflows.[`@spherity/aries-rfcs-veramo-plugin`](https://github.com/spherity/aries-rfcs-veramo-plugin) contain message handlers that are based on aries flows and also contains methods that allow the initiation of those Aries Flows.
 
 ### Supported Flows
 
@@ -117,8 +117,11 @@ A DIDComm `[MessageHandlerPlugin](https://github.com/uport-project/veramo/tree/n
     return vc;
   }
   ```
+
   ********\*\*\*\*********ReceiveCredentialCallback********\*\*\*\*********
+
   The parameters for the callback for `receiveCredential` are `fromDid`, `credential`, `message` (contains the credential offer message sent by the issuer to receiver). There is no expected response from the `receiveCredential` .
+
   ****\*\*\*\*****Sample****\*\*\*\*****
   ```tsx
   private async receiveCredential(fromDid: string, credential: any, message: any) {
@@ -135,10 +138,12 @@ A DIDComm `[MessageHandlerPlugin](https://github.com/uport-project/veramo/tree/n
      // save credential in the database
   }
   ```
+
 - **PresentProof0454MessageHandler**
   The `PresentProof0454MessageHandler` supports the [`Aries RFC 0454`](https://github.com/hyperledger/aries-rfcs/tree/main/features/0454-present-proof-v2) flows. It allows the user to send messages within that specific protocol, it requires callback functions for Creating a Presentation and Verifying a Presentation.
   **Create Presentation Callback**
   The parameters for the callback for `createPresentation` are `holderDid` , `veramoAgent`, `credentialType`. The response from the `createPresentation` callback can be anything from the `presentation` to the `jwt` as long .
+  
   ****\*\*\*\*****Sample****\*\*\*\*****
   ```tsx
   private async createPresentation(
