@@ -161,18 +161,18 @@
     }
   },
   "kind": "Package",
-  "canonicalReference": "aries-veramo-plugin!",
+  "canonicalReference": "aries-rfcs-veramo-plugin!",
   "docComment": "",
-  "name": "aries-veramo-plugin",
+  "name": "aries-rfcs-veramo-plugin",
   "members": [
     {
       "kind": "EntryPoint",
-      "canonicalReference": "aries-veramo-plugin!",
+      "canonicalReference": "aries-rfcs-veramo-plugin!",
       "name": "",
       "members": [
         {
           "kind": "Class",
-          "canonicalReference": "aries-veramo-plugin!AriesRFCsPlugin:class",
+          "canonicalReference": "aries-rfcs-veramo-plugin!AriesRFCsPlugin:class",
           "docComment": "/**\n * {@inheritDoc IMyAgentPlugin}\n *\n * @beta\n */\n",
           "excerptTokens": [
             {
@@ -194,7 +194,7 @@
           "members": [
             {
               "kind": "Property",
-              "canonicalReference": "aries-veramo-plugin!AriesRFCsPlugin#eventTypes:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!AriesRFCsPlugin#eventTypes:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -223,7 +223,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "aries-veramo-plugin!AriesRFCsPlugin#methods:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!AriesRFCsPlugin#methods:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -233,7 +233,7 @@
                 {
                   "kind": "Reference",
                   "text": "IAriesRFCsPlugin",
-                  "canonicalReference": "aries-veramo-plugin!IAriesRFCsPlugin:interface"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!IAriesRFCsPlugin:interface"
                 },
                 {
                   "kind": "Content",
@@ -253,7 +253,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "aries-veramo-plugin!AriesRFCsPlugin#onEvent:member(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!AriesRFCsPlugin#onEvent:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -271,7 +271,7 @@
                 {
                   "kind": "Reference",
                   "text": "IRequiredContext",
-                  "canonicalReference": "aries-veramo-plugin!IRequiredContext:type"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!IRequiredContext:type"
                 },
                 {
                   "kind": "Content",
@@ -330,7 +330,7 @@
         },
         {
           "kind": "Enum",
-          "canonicalReference": "aries-veramo-plugin!DIDCommMessagePacking:enum",
+          "canonicalReference": "aries-rfcs-veramo-plugin!DIDCommMessagePacking:enum",
           "docComment": "",
           "excerptTokens": [
             {
@@ -343,7 +343,7 @@
           "members": [
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!DIDCommMessagePacking.AUTHCRYPT:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!DIDCommMessagePacking.AUTHCRYPT:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -364,7 +364,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!DIDCommMessagePacking.JWS:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!DIDCommMessagePacking.JWS:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -385,7 +385,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!DIDCommMessagePacking.NONE:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!DIDCommMessagePacking.NONE:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -408,7 +408,7 @@
         },
         {
           "kind": "Class",
-          "canonicalReference": "aries-veramo-plugin!DidExchange0023MessageHandler:class",
+          "canonicalReference": "aries-rfcs-veramo-plugin!DidExchange0023MessageHandler:class",
           "docComment": "",
           "excerptTokens": [
             {
@@ -430,7 +430,7 @@
           "members": [
             {
               "kind": "Constructor",
-              "canonicalReference": "aries-veramo-plugin!DidExchange0023MessageHandler:constructor(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!DidExchange0023MessageHandler:constructor(1)",
               "docComment": "/**\n * Constructs a new instance of the `DidExchange0023MessageHandler` class\n */\n",
               "excerptTokens": [
                 {
@@ -462,7 +462,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "aries-veramo-plugin!DidExchange0023MessageHandler.getMachineConfig:member(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!DidExchange0023MessageHandler.getMachineConfig:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -551,7 +551,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "aries-veramo-plugin!DidExchange0023MessageHandler#handle:member(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!DidExchange0023MessageHandler#handle:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -570,7 +570,7 @@
                 {
                   "kind": "Reference",
                   "text": "IContext",
-                  "canonicalReference": "aries-veramo-plugin!~IContext:type"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!~IContext:type"
                 },
                 {
                   "kind": "Content",
@@ -630,7 +630,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "aries-veramo-plugin!DidExchange0023MessageHandler#stateMachineConfiguration:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!DidExchange0023MessageHandler#stateMachineConfiguration:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -671,7 +671,7 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "aries-veramo-plugin!IAriesRFCsPlugin:interface",
+          "canonicalReference": "aries-rfcs-veramo-plugin!IAriesRFCsPlugin:interface",
           "docComment": "/**\n * Plugin implementation of Aries RFC flows to allow sending of DIDCOMM messages as defined in the spec\n *\n * @Beta\n */\n",
           "excerptTokens": [
             {
@@ -693,7 +693,7 @@
           "members": [
             {
               "kind": "MethodSignature",
-              "canonicalReference": "aries-veramo-plugin!IAriesRFCsPlugin#send0023:member(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!IAriesRFCsPlugin#send0023:member(1)",
               "docComment": "/**\n * Your plugin method description\n *\n * @param args - Input parameters for this method\n *\n * @param context - The required context where this method can run. Declaring a context type here lets other developers know which other plugins need to also be installed for this method to work.\n *\n * @returns The response of this function\n */\n",
               "excerptTokens": [
                 {
@@ -703,7 +703,7 @@
                 {
                   "kind": "Reference",
                   "text": "Send0023MessageAttr",
-                  "canonicalReference": "aries-veramo-plugin!Send0023MessageAttr:interface"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!Send0023MessageAttr:interface"
                 },
                 {
                   "kind": "Content",
@@ -712,7 +712,7 @@
                 {
                   "kind": "Reference",
                   "text": "IRequiredContext",
-                  "canonicalReference": "aries-veramo-plugin!IRequiredContext:type"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!IRequiredContext:type"
                 },
                 {
                   "kind": "Content",
@@ -730,7 +730,7 @@
                 {
                   "kind": "Reference",
                   "text": "SendRFCsResponse",
-                  "canonicalReference": "aries-veramo-plugin!SendRFCsResponse:type"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!SendRFCsResponse:type"
                 },
                 {
                   "kind": "Content",
@@ -770,7 +770,7 @@
             },
             {
               "kind": "MethodSignature",
-              "canonicalReference": "aries-veramo-plugin!IAriesRFCsPlugin#send0453:member(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!IAriesRFCsPlugin#send0453:member(1)",
               "docComment": "/**\n * Your plugin method description\n *\n * @param args - Input parameters for this method\n *\n * @param context - The required context where this method can run. Declaring a context type here lets other developers know which other plugins need to also be installed for this method to work.\n *\n * @returns The response of this function\n */\n",
               "excerptTokens": [
                 {
@@ -780,7 +780,7 @@
                 {
                   "kind": "Reference",
                   "text": "Send0453MessageAttr",
-                  "canonicalReference": "aries-veramo-plugin!Send0453MessageAttr:interface"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!Send0453MessageAttr:interface"
                 },
                 {
                   "kind": "Content",
@@ -789,7 +789,7 @@
                 {
                   "kind": "Reference",
                   "text": "IRequiredContext",
-                  "canonicalReference": "aries-veramo-plugin!IRequiredContext:type"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!IRequiredContext:type"
                 },
                 {
                   "kind": "Content",
@@ -807,7 +807,7 @@
                 {
                   "kind": "Reference",
                   "text": "SendRFCsResponse",
-                  "canonicalReference": "aries-veramo-plugin!SendRFCsResponse:type"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!SendRFCsResponse:type"
                 },
                 {
                   "kind": "Content",
@@ -847,7 +847,7 @@
             },
             {
               "kind": "MethodSignature",
-              "canonicalReference": "aries-veramo-plugin!IAriesRFCsPlugin#send0454:member(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!IAriesRFCsPlugin#send0454:member(1)",
               "docComment": "/**\n * Your plugin method description\n *\n * @param args - Input parameters for this method\n *\n * @param context - The required context where this method can run. Declaring a context type here lets other developers know which other plugins need to also be installed for this method to work.\n *\n * @returns The response of this function\n */\n",
               "excerptTokens": [
                 {
@@ -857,7 +857,7 @@
                 {
                   "kind": "Reference",
                   "text": "Send0454MessageAttr",
-                  "canonicalReference": "aries-veramo-plugin!Send0454MessageAttr:interface"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!Send0454MessageAttr:interface"
                 },
                 {
                   "kind": "Content",
@@ -866,7 +866,7 @@
                 {
                   "kind": "Reference",
                   "text": "IRequiredContext",
-                  "canonicalReference": "aries-veramo-plugin!IRequiredContext:type"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!IRequiredContext:type"
                 },
                 {
                   "kind": "Content",
@@ -884,7 +884,7 @@
                 {
                   "kind": "Reference",
                   "text": "SendRFCsResponse",
-                  "canonicalReference": "aries-veramo-plugin!SendRFCsResponse:type"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!SendRFCsResponse:type"
                 },
                 {
                   "kind": "Content",
@@ -932,7 +932,7 @@
         },
         {
           "kind": "TypeAlias",
-          "canonicalReference": "aries-veramo-plugin!IRequiredContext:type",
+          "canonicalReference": "aries-rfcs-veramo-plugin!IRequiredContext:type",
           "docComment": "/**\n * This context describes the requirements of this plugin. For this plugin to function properly, the agent needs to also have other plugins installed that implement the interfaces declared here. You can also define requirements on a more granular level, for each plugin method or event handler of your plugin.\n *\n * @beta\n */\n",
           "excerptTokens": [
             {
@@ -980,7 +980,7 @@
         },
         {
           "kind": "Class",
-          "canonicalReference": "aries-veramo-plugin!IssueCredential0453MessageHandler:class",
+          "canonicalReference": "aries-rfcs-veramo-plugin!IssueCredential0453MessageHandler:class",
           "docComment": "",
           "excerptTokens": [
             {
@@ -1002,7 +1002,7 @@
           "members": [
             {
               "kind": "Constructor",
-              "canonicalReference": "aries-veramo-plugin!IssueCredential0453MessageHandler:constructor(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!IssueCredential0453MessageHandler:constructor(1)",
               "docComment": "/**\n * Constructs a new instance of the `IssueCredential0453MessageHandler` class\n */\n",
               "excerptTokens": [
                 {
@@ -1052,7 +1052,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "aries-veramo-plugin!IssueCredential0453MessageHandler.getMachineConfig:member(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!IssueCredential0453MessageHandler.getMachineConfig:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1141,7 +1141,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "aries-veramo-plugin!IssueCredential0453MessageHandler#handle:member(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!IssueCredential0453MessageHandler#handle:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1160,7 +1160,7 @@
                 {
                   "kind": "Reference",
                   "text": "IContext",
-                  "canonicalReference": "aries-veramo-plugin!~IContext:type"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!~IContext:type"
                 },
                 {
                   "kind": "Content",
@@ -1220,7 +1220,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "aries-veramo-plugin!IssueCredential0453MessageHandler#stateMachineConfiguration:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!IssueCredential0453MessageHandler#stateMachineConfiguration:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1261,7 +1261,7 @@
         },
         {
           "kind": "Enum",
-          "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0453:enum",
+          "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0453:enum",
           "docComment": "/**\n * Message types for the O453 present proof ARIES flow\n */\n",
           "excerptTokens": [
             {
@@ -1274,7 +1274,7 @@
           "members": [
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0453.COMPLETE:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0453.COMPLETE:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1295,7 +1295,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0453.ISSUE_CREDENTIAL:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0453.ISSUE_CREDENTIAL:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1316,7 +1316,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0453.OFFER_CREDENTIAL:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0453.OFFER_CREDENTIAL:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1337,7 +1337,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0453.PROBLEM_REPORT:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0453.PROBLEM_REPORT:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1358,7 +1358,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0453.PROPOSE_CREDENTIAL:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0453.PROPOSE_CREDENTIAL:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1379,7 +1379,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0453.REQUEST_CREDENTIAL:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0453.REQUEST_CREDENTIAL:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1402,7 +1402,7 @@
         },
         {
           "kind": "Enum",
-          "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0454:enum",
+          "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0454:enum",
           "docComment": "/**\n * Message types for the O454 present proof ARIES flow\n */\n",
           "excerptTokens": [
             {
@@ -1415,7 +1415,7 @@
           "members": [
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0454.ACK:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0454.ACK:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1436,7 +1436,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0454.PRESENTATION:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0454.PRESENTATION:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1457,7 +1457,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0454.PROBLEM_REPORT:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0454.PROBLEM_REPORT:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1478,7 +1478,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0454.PROPOSE_PRESENTATION:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0454.PROPOSE_PRESENTATION:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1499,7 +1499,7 @@
             },
             {
               "kind": "EnumMember",
-              "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0454.REQUEST_PRESENTATION:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0454.REQUEST_PRESENTATION:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1522,7 +1522,7 @@
         },
         {
           "kind": "Class",
-          "canonicalReference": "aries-veramo-plugin!PresentProof0454MessageHandler:class",
+          "canonicalReference": "aries-rfcs-veramo-plugin!PresentProof0454MessageHandler:class",
           "docComment": "",
           "excerptTokens": [
             {
@@ -1544,7 +1544,7 @@
           "members": [
             {
               "kind": "Constructor",
-              "canonicalReference": "aries-veramo-plugin!PresentProof0454MessageHandler:constructor(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!PresentProof0454MessageHandler:constructor(1)",
               "docComment": "/**\n * Constructs a new instance of the `PresentProof0454MessageHandler` class\n */\n",
               "excerptTokens": [
                 {
@@ -1594,7 +1594,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "aries-veramo-plugin!PresentProof0454MessageHandler.getMachineConfig:member(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!PresentProof0454MessageHandler.getMachineConfig:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1683,7 +1683,7 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "aries-veramo-plugin!PresentProof0454MessageHandler#handle:member(1)",
+              "canonicalReference": "aries-rfcs-veramo-plugin!PresentProof0454MessageHandler#handle:member(1)",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1702,7 +1702,7 @@
                 {
                   "kind": "Reference",
                   "text": "IContext",
-                  "canonicalReference": "aries-veramo-plugin!~IContext:type"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!~IContext:type"
                 },
                 {
                   "kind": "Content",
@@ -1762,7 +1762,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "aries-veramo-plugin!PresentProof0454MessageHandler#stateMachineConfiguration:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!PresentProof0454MessageHandler#stateMachineConfiguration:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1803,7 +1803,7 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "aries-veramo-plugin!Send0023MessageAttr:interface",
+          "canonicalReference": "aries-rfcs-veramo-plugin!Send0023MessageAttr:interface",
           "docComment": "",
           "excerptTokens": [
             {
@@ -1813,7 +1813,7 @@
             {
               "kind": "Reference",
               "text": "SendMessageAttr",
-              "canonicalReference": "aries-veramo-plugin!~SendMessageAttr:interface"
+              "canonicalReference": "aries-rfcs-veramo-plugin!~SendMessageAttr:interface"
             },
             {
               "kind": "Content",
@@ -1832,7 +1832,7 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "aries-veramo-plugin!Send0453MessageAttr:interface",
+          "canonicalReference": "aries-rfcs-veramo-plugin!Send0453MessageAttr:interface",
           "docComment": "",
           "excerptTokens": [
             {
@@ -1842,7 +1842,7 @@
             {
               "kind": "Reference",
               "text": "SendMessageAttr",
-              "canonicalReference": "aries-veramo-plugin!~SendMessageAttr:interface"
+              "canonicalReference": "aries-rfcs-veramo-plugin!~SendMessageAttr:interface"
             },
             {
               "kind": "Content",
@@ -1854,7 +1854,7 @@
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "aries-veramo-plugin!Send0453MessageAttr#message:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!Send0453MessageAttr#message:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1868,7 +1868,7 @@
                 {
                   "kind": "Reference",
                   "text": "MESSAGE_TYPES_0453",
-                  "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0453:enum"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0453:enum"
                 },
                 {
                   "kind": "Content",
@@ -1890,7 +1890,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "aries-veramo-plugin!Send0453MessageAttr#packingType:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!Send0453MessageAttr#packingType:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1900,7 +1900,7 @@
                 {
                   "kind": "Reference",
                   "text": "DIDCommMessagePacking",
-                  "canonicalReference": "aries-veramo-plugin!DIDCommMessagePacking:enum"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!DIDCommMessagePacking:enum"
                 },
                 {
                   "kind": "Content",
@@ -1918,7 +1918,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "aries-veramo-plugin!Send0453MessageAttr#type:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!Send0453MessageAttr#type:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1928,7 +1928,7 @@
                 {
                   "kind": "Reference",
                   "text": "MESSAGE_TYPES_0453",
-                  "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0453:enum"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0453:enum"
                 },
                 {
                   "kind": "Content",
@@ -1954,7 +1954,7 @@
         },
         {
           "kind": "Interface",
-          "canonicalReference": "aries-veramo-plugin!Send0454MessageAttr:interface",
+          "canonicalReference": "aries-rfcs-veramo-plugin!Send0454MessageAttr:interface",
           "docComment": "",
           "excerptTokens": [
             {
@@ -1964,7 +1964,7 @@
             {
               "kind": "Reference",
               "text": "SendMessageAttr",
-              "canonicalReference": "aries-veramo-plugin!~SendMessageAttr:interface"
+              "canonicalReference": "aries-rfcs-veramo-plugin!~SendMessageAttr:interface"
             },
             {
               "kind": "Content",
@@ -1976,7 +1976,7 @@
           "members": [
             {
               "kind": "PropertySignature",
-              "canonicalReference": "aries-veramo-plugin!Send0454MessageAttr#message:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!Send0454MessageAttr#message:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -1990,7 +1990,7 @@
                 {
                   "kind": "Reference",
                   "text": "MESSAGE_TYPES_0454",
-                  "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0454:enum"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0454:enum"
                 },
                 {
                   "kind": "Content",
@@ -2012,7 +2012,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "aries-veramo-plugin!Send0454MessageAttr#packingType:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!Send0454MessageAttr#packingType:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -2022,7 +2022,7 @@
                 {
                   "kind": "Reference",
                   "text": "DIDCommMessagePacking",
-                  "canonicalReference": "aries-veramo-plugin!DIDCommMessagePacking:enum"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!DIDCommMessagePacking:enum"
                 },
                 {
                   "kind": "Content",
@@ -2040,7 +2040,7 @@
             },
             {
               "kind": "PropertySignature",
-              "canonicalReference": "aries-veramo-plugin!Send0454MessageAttr#type:member",
+              "canonicalReference": "aries-rfcs-veramo-plugin!Send0454MessageAttr#type:member",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -2050,7 +2050,7 @@
                 {
                   "kind": "Reference",
                   "text": "MESSAGE_TYPES_0454",
-                  "canonicalReference": "aries-veramo-plugin!MESSAGE_TYPES_0454:enum"
+                  "canonicalReference": "aries-rfcs-veramo-plugin!MESSAGE_TYPES_0454:enum"
                 },
                 {
                   "kind": "Content",
@@ -2076,7 +2076,7 @@
         },
         {
           "kind": "TypeAlias",
-          "canonicalReference": "aries-veramo-plugin!SendRFCsResponse:type",
+          "canonicalReference": "aries-rfcs-veramo-plugin!SendRFCsResponse:type",
           "docComment": "/**\n * Result of {@link AriesRFCsPlugin.[send_Messages]} To be able to export a plugin schema, your plugin return types need to be Promises of a named type or interface.\n *\n * @beta\n */\n",
           "excerptTokens": [
             {
@@ -2101,7 +2101,7 @@
         },
         {
           "kind": "TypeAlias",
-          "canonicalReference": "aries-veramo-plugin!VeramoAgent:type",
+          "canonicalReference": "aries-rfcs-veramo-plugin!VeramoAgent:type",
           "docComment": "",
           "excerptTokens": [
             {
