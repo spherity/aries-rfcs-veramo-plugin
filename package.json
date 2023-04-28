@@ -1,5 +1,5 @@
 {
-  "name": "aries-rfcs-veramo-plugin",
+  "name": "@spherity/aries-rfcs-veramo-plugin",
   "version": "1.0.0",
   "source": "src/index.ts",
   "main": "build/index.js",
