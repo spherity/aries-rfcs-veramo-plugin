@@ -1,8 +1,7 @@
 name: Build and publish package
 on:
-  push:
-    -branches:
-      - main
+  release:
+    types: [published]
 
 jobs:
   publish-npm:
