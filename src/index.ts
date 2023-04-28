@@ -1,10 +1,9 @@
 /**
  * @public
  */
-export { MyAgentPlugin } from './agent-plugin/my-plugin.js'
-export { MyKeyManagementSystem } from './key-manager/my-key-management-system.js'
-export { MyKeyStore } from './key-manager/my-key-store.js'
-export { SecretBox } from './key-manager/my-secret-box.js'
-export { MyIdentifierProvider } from './did-manager/my-identifier-provider.js'
-export { MyDIDStore } from './did-manager/my-did-store.js'
-export * from './types/IMyAgentPlugin.js'
+export { AriesRFCsPlugin } from './AriesRFCsPlugin'
+export { PresentProof0454MessageHandler } from './handlers/0454-present-proof-v2.handler'
+export { DidExchange0023MessageHandler } from './handlers/0023-did-exchange.handler'
+export { IssueCredential0453MessageHandler } from './handlers/0453-issue-credential-v2.handler'
+export * from './types/IAriesRFCsPlugin'
+export * from './types/VeramoAgent'

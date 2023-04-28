@@ -2,17 +2,24 @@
   "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
   "apiReport": {
     "enabled": true,
-    "reportFolder": "./tmp",
-    "reportTempFolder": "./tmp"
+    "reportFolder": "./api-docs",
+    "reportTempFolder": "./api-docs"
   },
 
   "docModel": {
     "enabled": true,
-    "apiJsonFilePath": "./tmp/<unscopedPackageName>.api.json"
+    "apiJsonFilePath": "./api-docs/<unscopedPackageName>.api.json"
   },
 
   "dtsRollup": {
     "enabled": false
   },
-  "mainEntryPointFilePath": "<projectFolder>/build/index.d.ts"
+  "messages": {
+    "extractorMessageReporting": {
+      "ae-wrong-input-file-type": {
+        "logLevel": "none"
+      }
+    }
+  },
+  "mainEntryPointFilePath": "./build/index.d.ts"
 }

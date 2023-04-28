@@ -1,0 +1,278 @@
+{
+  "IAriesRFCsPlugin": {
+    "components": {
+      "schemas": {
+        "Send0023MessageAttr": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The sender of the message or initiator of the protocol"
+            },
+            "to": {
+              "type": "string",
+              "description": "The receiver of the first message"
+            }
+          },
+          "required": [
+            "from",
+            "to"
+          ]
+        },
+        "SendRFCsResponse": {
+          "type": "object",
+          "properties": {
+            "threadId": {
+              "type": "string",
+              "description": "The thread ID for the initiated protocol (exchange)"
+            },
+            "protocolState": {
+              "type": "string",
+              "description": "The state of the protocol after initiated"
+            }
+          },
+          "required": [
+            "threadId",
+            "protocolState"
+          ],
+          "description": "Result of  {@link  AriesRFCsPlugin. [send_Messages] } \nThis is the result type of sending an RFC message or initiating an RFC protocol successfully"
+        },
+        "Send0453MessageAttr": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The sender of the message or initiator of the protocol"
+            },
+            "to": {
+              "type": "string",
+              "description": "The receiver of the first message"
+            },
+            "type": {
+              "$ref": "#/components/schemas/MESSAGE_TYPES_0453",
+              "description": "The type of message\n {@link  MESSAGE_TYPES_0453 }"
+            },
+            "message": {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/components/schemas/MESSAGE_TYPES_0453"
+                }
+              },
+              "required": [
+                "@type"
+              ],
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "constructor": {
+                        "type": "object",
+                        "properties": {
+                          "prototype": {},
+                          "length": {
+                            "type": "number"
+                          },
+                          "arguments": {},
+                          "caller": {
+                            "$ref": "#/components/schemas/interface-731470504-10057-11521-731470504-0-217681"
+                          }
+                        },
+                        "required": [
+                          "prototype",
+                          "length",
+                          "arguments",
+                          "caller"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "constructor"
+                    ]
+                  }
+                ],
+                "description": "Other attributes of the message"
+              }
+            },
+            "packingType": {
+              "$ref": "#/components/schemas/DIDCommMessagePacking"
+            }
+          },
+          "required": [
+            "from",
+            "message",
+            "packingType",
+            "to",
+            "type"
+          ]
+        },
+        "MESSAGE_TYPES_0453": {
+          "type": "string",
+          "enum": [
+            "https://didcomm.org/issue-credential/2.1/propose-credential",
+            "https://didcomm.org/issue-credential/2.1/offer-credential",
+            "https://didcomm.org/issue-credential/2.1/request-credential",
+            "https://didcomm.org/issue-credential/2.1/issue-credential",
+            "https://didcomm.org/issue-credential/2.1/problem_report",
+            "https://didcomm.org/issue-credential/2.1/complete"
+          ],
+          "description": "Message types for the O453 present proof ARIES flow"
+        },
+        "interface-731470504-10057-11521-731470504-0-217681": {
+          "type": "object",
+          "properties": {
+            "prototype": {},
+            "length": {
+              "type": "number"
+            },
+            "arguments": {},
+            "caller": {
+              "$ref": "#/components/schemas/interface-731470504-10057-11521-731470504-0-217681"
+            }
+          },
+          "required": [
+            "prototype",
+            "length",
+            "arguments",
+            "caller"
+          ]
+        },
+        "DIDCommMessagePacking": {
+          "type": "string",
+          "enum": [
+            "authcrypt",
+            "anoncrypt",
+            "jws",
+            "none",
+            "anoncrypt+authcrypt",
+            "anoncrypt+jws"
+          ],
+          "description": "The possible types of message packing.\n\n`authcrypt`, `anoncrypt`, `anoncrypt+authcrypt`, and `anoncrypt+jws` will produce `DIDCommMessageMediaType.ENCRYPTED` messages.\n\n`jws` will produce `DIDCommMessageMediaType.SIGNED` messages.\n\n`none` will produce `DIDCommMessageMediaType.PLAIN` messages."
+        },
+        "Send0454MessageAttr": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "string",
+              "description": "The sender of the message or initiator of the protocol"
+            },
+            "to": {
+              "type": "string",
+              "description": "The receiver of the first message"
+            },
+            "type": {
+              "$ref": "#/components/schemas/MESSAGE_TYPES_0454",
+              "description": "The type of message\n {@link  MESSAGE_TYPES_0453 }"
+            },
+            "message": {
+              "type": "object",
+              "properties": {
+                "@type": {
+                  "$ref": "#/components/schemas/MESSAGE_TYPES_0454"
+                }
+              },
+              "required": [
+                "@type"
+              ],
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "constructor": {
+                        "type": "object",
+                        "properties": {
+                          "prototype": {},
+                          "length": {
+                            "type": "number"
+                          },
+                          "arguments": {},
+                          "caller": {
+                            "$ref": "#/components/schemas/interface-731470504-10057-11521-731470504-0-217681"
+                          }
+                        },
+                        "required": [
+                          "prototype",
+                          "length",
+                          "arguments",
+                          "caller"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "constructor"
+                    ]
+                  }
+                ],
+                "description": "Other attributes of the message"
+              }
+            },
+            "packingType": {
+              "$ref": "#/components/schemas/DIDCommMessagePacking"
+            }
+          },
+          "required": [
+            "from",
+            "message",
+            "packingType",
+            "to",
+            "type"
+          ]
+        },
+        "MESSAGE_TYPES_0454": {
+          "type": "string",
+          "enum": [
+            "https://didcomm.org/present-proof/2.2/propose-presentation",
+            "https://didcomm.org/present-proof/2.2/request-presentation",
+            "https://didcomm.org/present-proof/2.2/presentation",
+            "https://didcomm.org/present-proof/2.2/problem_report",
+            "https://didcomm.org/notification/1.0/ack"
+          ],
+          "description": "Message types for the O454 present proof ARIES flow"
+        }
+      },
+      "methods": {
+        "send0023": {
+          "description": "Your plugin method description",
+          "arguments": {
+            "$ref": "#/components/schemas/Send0023MessageAttr"
+          },
+          "returnType": {
+            "$ref": "#/components/schemas/SendRFCsResponse"
+          }
+        },
+        "send0453": {
+          "description": "Your plugin method description",
+          "arguments": {
+            "$ref": "#/components/schemas/Send0453MessageAttr"
+          },
+          "returnType": {
+            "$ref": "#/components/schemas/SendRFCsResponse"
+          }
+        },
+        "send0454": {
+          "description": "Your plugin method description",
+          "arguments": {
+            "$ref": "#/components/schemas/Send0454MessageAttr"
+          },
+          "returnType": {
+            "$ref": "#/components/schemas/SendRFCsResponse"
+          }
+        }
+      }
+    }
+  }
+}
